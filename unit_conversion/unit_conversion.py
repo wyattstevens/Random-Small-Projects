@@ -36,7 +36,7 @@ def conversionsToGraph(conversions):
                         conversionsGraph[starting_node] = [(neighboring_node, multiplier)]
                 else:
                         conversionsGraph[starting_node].append((neighboring_node, multiplier))
-
+        
         return conversionsGraph
 
 #dfs/bfs to find the path
@@ -66,10 +66,15 @@ def convert(graph, request):
                 visited.remove(starting_node)
 
         path = dfs_recursive(graph, request[1], request[2], request[0])
-        print(path)
+        return path
 
 
 graph = conversionsToGraph(conversions)
-convert(graph, (560, 'cm', 'ft'))
+starting_unit = 'cm'
+starting_units = 560
+target_unit = 'ft'
+result = convert(graph, (starting_units, starting_unit, target_unit))
+
+print(result[1])
 
         
